@@ -1,3 +1,6 @@
+
+import java.util.Random;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -15,6 +18,15 @@ public class gui extends javax.swing.JFrame {
      */
     public gui() {
         initComponents();
+        
+        Random random = new Random();
+        int numeroSecreto = random.nextInt(900) + 100;
+        int pass1 = numeroSecreto / 100;
+        int pass2 = (numeroSecreto / 10) % 10;
+        int pass3 = numeroSecreto % 10;
+        passRevelar1.setText(String.valueOf(pass1));
+        passRevelar2.setText(String.valueOf(pass2));
+        passRevelar3.setText(String.valueOf(pass3));
     }
 
     /**
