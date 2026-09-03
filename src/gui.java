@@ -19,7 +19,7 @@ public class gui extends javax.swing.JFrame {
     public gui() {
         initComponents();
         
- HEAD
+
         Random random = new Random();
         int numeroSecreto = random.nextInt(900) + 100;
         int pass1 = numeroSecreto / 100;
@@ -111,8 +111,6 @@ passRevelar3.setEchoChar('$');
                 .addContainerGap())
         );
 
-        passRevelar1.getAccessibleContext().setAccessibleDescription("");
-
         lblPista.setForeground(new java.awt.Color(255, 255, 51));
         lblPista.setText("                                                                         Por favor, Ingresa exactamente 3 numeros.");
         lblPista.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
@@ -135,6 +133,11 @@ passRevelar3.setEchoChar('$');
         txtCodigoEscribir.setForeground(new java.awt.Color(255, 102, 102));
         txtCodigoEscribir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "escribe 3 digitos + ENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI Semibold", 2, 18), new java.awt.Color(255, 51, 51))); // NOI18N
         txtCodigoEscribir.setCaretColor(new java.awt.Color(255, 102, 102));
+        txtCodigoEscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoEscribirActionPerformed(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblPista, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -261,6 +264,37 @@ passRevelar3.setEchoChar('$');
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRevelarActionPerformed
+
+    private void txtCodigoEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoEscribirActionPerformed
+        // TODO add your handling code here:
+        
+        
+        
+         
+         String CodigoSecreto1;
+        
+        CodigoSecreto1 = "123";
+       String ingreso = txtCodigoEscribir.getText();
+        if(ingreso.length() == CodigoSecreto1.length()){
+        if(CodigoSecreto1.equals(ingreso)){
+            
+            passRevelar1.setText("1");
+            passRevelar2.setText("2");
+            passRevelar3.setText("3");
+            passRevelar1.setEchoChar((char)0);
+            passRevelar2.setEchoChar((char)0);
+            passRevelar3.setEchoChar((char)0);
+            lblPista.setText("el codigo es correcto");
+            
+        }
+        
+        
+        
+        
+        
+        
+        
+    }//GEN-LAST:event_txtCodigoEscribirActionPerformed
 
     /**
      * @param args the command line arguments
