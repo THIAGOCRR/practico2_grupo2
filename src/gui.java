@@ -21,6 +21,7 @@ public class gui extends javax.swing.JFrame {
         initComponents();
         
         //Generar número random.
+
         Random random = new Random();
         numeroSecreto = random.nextInt(900) + 100;
         int pass1 = numeroSecreto / 100;
@@ -144,6 +145,9 @@ public class gui extends javax.swing.JFrame {
         txtCodigoEscribir.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtCodigoEscribirKeyTyped(evt);
+        txtCodigoEscribir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoEscribirActionPerformed(evt);
             }
         });
 
@@ -273,8 +277,7 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRevelarActionPerformed
 
-    private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
-        // TODO add your handling code here:
+	private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
     char c = evt.getKeyChar();
 
     if (Character.isDigit(c)) {
@@ -287,12 +290,32 @@ public class gui extends javax.swing.JFrame {
                 lblPista.setText("Más bajo");
             } else if (resultado < numeroSecreto) {
                 lblPista.setText("Más alto");
-            } else {
-                lblPista.setText("¡Correcto!");
             }
         }
     }
-    }//GEN-LAST:event_txtCodigoEscribirKeyTyped
+	}//GEN-LAST:event_txtCodigoEscribirKeyTyped
+
+	private void txtCodigoEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoEscribirActionPerformed
+    // TODO add your handling code here:
+    
+    String CodigoSecreto1;
+    
+    CodigoSecreto1 = "123";
+    String ingreso = txtCodigoEscribir.getText();
+
+    if (ingreso.length() == CodigoSecreto1.length()) {
+        if (CodigoSecreto1.equals(ingreso)) {
+            
+            passRevelar1.setText("1");
+            passRevelar2.setText("2");
+            passRevelar3.setText("3");
+            passRevelar1.setEchoChar((char)0);
+            passRevelar2.setEchoChar((char)0);
+            passRevelar3.setEchoChar((char)0);
+            lblPista.setText("el codigo es correcto");
+        }
+    }
+	}//GEN-LAST:event_txtCodigoEscribirActionPerformed
 
     /**
      * @param args the command line arguments
