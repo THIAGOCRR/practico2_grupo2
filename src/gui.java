@@ -12,6 +12,7 @@ import java.util.Random;
  * @author crn70
  */
 public class gui extends javax.swing.JFrame {
+    int numeroSecreto;
 
     /**
      * Creates new form gui
@@ -19,9 +20,9 @@ public class gui extends javax.swing.JFrame {
     public gui() {
         initComponents();
         
- HEAD
+        //Generar número random.
         Random random = new Random();
-        int numeroSecreto = random.nextInt(900) + 100;
+        numeroSecreto = random.nextInt(900) + 100;
         int pass1 = numeroSecreto / 100;
         int pass2 = (numeroSecreto / 10) % 10;
         int pass3 = numeroSecreto % 10;
@@ -29,12 +30,13 @@ public class gui extends javax.swing.JFrame {
         passRevelar2.setText(String.valueOf(pass2));
         passRevelar3.setText(String.valueOf(pass3));
 
-         passRevelar1.setEchoChar('$');
- passRevelar2.setEchoChar('$');
-passRevelar3.setEchoChar('$');
+        //Ocultar el número secreto con "$".
+        passRevelar1.setEchoChar('$');
+        passRevelar2.setEchoChar('$');
+        passRevelar3.setEchoChar('$');
 
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -57,30 +59,36 @@ passRevelar3.setEchoChar('$');
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        passRevelar1.setEditable(false);
         passRevelar1.setBackground(new java.awt.Color(204, 153, 255));
         passRevelar1.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         passRevelar1.setText("$");
         passRevelar1.setToolTipText("");
         passRevelar1.setActionCommand("<Not Set>");
         passRevelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        passRevelar1.setFocusable(false);
         passRevelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passRevelar1ActionPerformed(evt);
             }
         });
 
+        passRevelar2.setEditable(false);
         passRevelar2.setBackground(new java.awt.Color(255, 255, 153));
         passRevelar2.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         passRevelar2.setText("$");
+        passRevelar2.setFocusable(false);
         passRevelar2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passRevelar2ActionPerformed(evt);
             }
         });
 
+        passRevelar3.setEditable(false);
         passRevelar3.setBackground(new java.awt.Color(153, 255, 153));
         passRevelar3.setFont(new java.awt.Font("Segoe UI", 1, 48)); // NOI18N
         passRevelar3.setText("$");
+        passRevelar3.setFocusable(false);
         passRevelar3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 passRevelar3ActionPerformed(evt);
@@ -111,8 +119,6 @@ passRevelar3.setEchoChar('$');
                 .addContainerGap())
         );
 
-        passRevelar1.getAccessibleContext().setAccessibleDescription("");
-
         lblPista.setForeground(new java.awt.Color(255, 255, 51));
         lblPista.setText("                                                                         Por favor, Ingresa exactamente 3 numeros.");
         lblPista.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
@@ -135,6 +141,11 @@ passRevelar3.setEchoChar('$');
         txtCodigoEscribir.setForeground(new java.awt.Color(255, 102, 102));
         txtCodigoEscribir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "escribe 3 digitos + ENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI Semibold", 2, 18), new java.awt.Color(255, 51, 51))); // NOI18N
         txtCodigoEscribir.setCaretColor(new java.awt.Color(255, 102, 102));
+        txtCodigoEscribir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoEscribirKeyTyped(evt);
+            }
+        });
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblPista, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -261,6 +272,27 @@ passRevelar3.setEchoChar('$');
 
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRevelarActionPerformed
+
+    private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
+        // TODO add your handling code here:
+    char c = evt.getKeyChar();
+
+    if (Character.isDigit(c)) {
+        String intento = txtCodigoEscribir.getText() + c;
+
+        if (intento.length() == 3) {
+            int resultado = Integer.parseInt(intento);
+
+            if (resultado > numeroSecreto) {
+                lblPista.setText("Más bajo");
+            } else if (resultado < numeroSecreto) {
+                lblPista.setText("Más alto");
+            } else {
+                lblPista.setText("¡Correcto!");
+            }
+        }
+    }
+    }//GEN-LAST:event_txtCodigoEscribirKeyTyped
 
     /**
      * @param args the command line arguments
