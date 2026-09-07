@@ -142,12 +142,14 @@ public class gui extends javax.swing.JFrame {
         txtCodigoEscribir.setForeground(new java.awt.Color(255, 102, 102));
         txtCodigoEscribir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "escribe 3 digitos + ENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI Semibold", 2, 18), new java.awt.Color(255, 51, 51))); // NOI18N
         txtCodigoEscribir.setCaretColor(new java.awt.Color(255, 102, 102));
-        txtCodigoEscribir.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtCodigoEscribirKeyTyped(evt);
         txtCodigoEscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoEscribirActionPerformed(evt);
+            }
+        });
+        txtCodigoEscribir.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtCodigoEscribirKeyTyped(evt);
             }
         });
 
@@ -277,24 +279,6 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnRevelarActionPerformed
 
-	private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
-    char c = evt.getKeyChar();
-
-    if (Character.isDigit(c)) {
-        String intento = txtCodigoEscribir.getText() + c;
-
-        if (intento.length() == 3) {
-            int resultado = Integer.parseInt(intento);
-
-            if (resultado > numeroSecreto) {
-                lblPista.setText("Más bajo");
-            } else if (resultado < numeroSecreto) {
-                lblPista.setText("Más alto");
-            }
-        }
-    }
-	}//GEN-LAST:event_txtCodigoEscribirKeyTyped
-
 	private void txtCodigoEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoEscribirActionPerformed
     // TODO add your handling code here:
     
@@ -316,6 +300,10 @@ public class gui extends javax.swing.JFrame {
         }
     }
 	}//GEN-LAST:event_txtCodigoEscribirActionPerformed
+
+    private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoEscribirKeyTyped
 
     /**
      * @param args the command line arguments
@@ -345,10 +333,8 @@ public class gui extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new gui().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new gui().setVisible(true);
         });
     }
 
