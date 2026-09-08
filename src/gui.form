@@ -64,7 +64,7 @@
                           <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                           <Component id="txtCodigoEscribir" min="-2" pref="290" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="btnRevelar" min="-2" pref="169" max="-2" attributes="0"/>
+                          <Component id="btnRevelarNumero" min="-2" pref="169" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="lblTrofeo" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
@@ -81,7 +81,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="32767" attributes="0"/>
-                          <Component id="btnRevelar" min="-2" pref="67" max="-2" attributes="0"/>
+                          <Component id="btnRevelarNumero" min="-2" pref="67" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
@@ -208,7 +208,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="btnRevelar">
+        <Component class="javax.swing.JButton" name="btnRevelarNumero">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
               <Image iconType="3" name="/imagenes/icons8-formato-claro-48.png"/>
@@ -216,7 +216,7 @@
             <Property name="text" type="java.lang.String" value="Revelar"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRevelarActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnRevelarNumeroActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="lblTrofeo">
