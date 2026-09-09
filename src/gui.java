@@ -67,7 +67,7 @@ private int intento = 0;
         passRevelar1.setText("$");
         passRevelar1.setToolTipText("");
         passRevelar1.setActionCommand("<Not Set>");
-        passRevelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        passRevelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         passRevelar1.setFocusable(false);
         passRevelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -133,7 +133,7 @@ private int intento = 0;
             }
         });
 
-        lblTrofeo.setText("jLabel1");
+        lblTrofeo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblCodigoSecreto.setFont(new java.awt.Font("Cambria Math", 2, 24)); // NOI18N
         lblCodigoSecreto.setForeground(new java.awt.Color(255, 255, 0));
@@ -187,8 +187,8 @@ private int intento = 0;
                         .addGap(18, 18, 18)
                         .addComponent(btnRevelarNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTrofeo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(21, 21, 21))))
+                        .addComponent(lblTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,14 +205,13 @@ private int intento = 0;
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(lblPista, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(lblTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(txtCodigoEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))))))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(0, 51, Short.MAX_VALUE)
+                                .addComponent(txtCodigoEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTrofeo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(37, 37, 37))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -339,6 +338,17 @@ private int intento = 0;
         passRevelar2.setEchoChar((char)0);
         passRevelar3.setEchoChar((char)0);
         lblPista.setText("el código es correcto");
+        
+     try{
+         java.net.URL url = new java.net.URL("https://images.vexels.com/media/users/3/202189/isolated/lists/4f3a5cb84297726d74d69dce22676f83-trofeo-numero-1-plano.png");
+        javax.swing.ImageIcon icon= new javax.swing.ImageIcon(url);
+        java.awt.Image img = icon.getImage().getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
+        lblTrofeo.setIcon(new javax.swing.ImageIcon(img));
+        lblTrofeo.setText("");         
+     }catch(Exception e){
+         System.out.println("Imagen de victoria");
+     }
+        
     } else if (numeroIngresado < numeroSecreto) {
         lblPista.setText("el código secreto es mayor");
     } else {
