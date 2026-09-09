@@ -14,7 +14,8 @@ import javax.swing.JOptionPane;
  */
 public class gui extends javax.swing.JFrame {
     int numeroSecreto;
-private int intento = 0;
+    private int intento = 0;
+    private int contadorIntentos=0;     //agregue la variable para el contador
     /**
      * Creates new form gui
      */
@@ -312,27 +313,15 @@ private int intento = 0;
 	private void txtCodigoEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoEscribirActionPerformed
     // TODO add your handling code here:
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
     int CodigoSecreto1;
     
     CodigoSecreto1 = numeroSecreto;
     String ingreso = txtCodigoEscribir.getText();
-
+   
     int numeroIngresado = Integer.parseInt(ingreso);
 
+    contadorIntentos++;
+    
     if (numeroIngresado == numeroSecreto) {
         passRevelar1.setEchoChar((char)0);
         passRevelar2.setEchoChar((char)0);
@@ -348,6 +337,10 @@ private int intento = 0;
      }catch(Exception e){
          System.out.println("Imagen de victoria");
      }
+     //numero de intentos
+     javax.swing.JOptionPane.showMessageDialog(this, "Adivinaste el código secreto. \nIntentos totales: " + String.valueOf(contadorIntentos)," ", 
+             javax.swing.JOptionPane.INFORMATION_MESSAGE);
+     
         
     } else if (numeroIngresado < numeroSecreto) {
         lblPista.setText("el código secreto es mayor");
