@@ -1,5 +1,6 @@
 
 import java.util.Random;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -13,7 +14,8 @@ import java.util.Random;
  */
 public class gui extends javax.swing.JFrame {
     int numeroSecreto;
-
+    private int intento = 0;
+    private int contadorIntentos=0;     //agregue la variable para el contador
     /**
      * Creates new form gui
      */
@@ -51,7 +53,7 @@ public class gui extends javax.swing.JFrame {
         passRevelar2 = new javax.swing.JPasswordField();
         passRevelar3 = new javax.swing.JPasswordField();
         lblPista = new javax.swing.JLabel();
-        btnRevelar = new javax.swing.JButton();
+        btnRevelarNumero = new javax.swing.JButton();
         lblTrofeo = new javax.swing.JLabel();
         lblCodigoSecreto = new javax.swing.JLabel();
         txtCodigoEscribir = new javax.swing.JTextField();
@@ -64,7 +66,7 @@ public class gui extends javax.swing.JFrame {
         passRevelar1.setText("$");
         passRevelar1.setToolTipText("");
         passRevelar1.setActionCommand("<Not Set>");
-        passRevelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.TEXT_CURSOR));
+        passRevelar1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         passRevelar1.setFocusable(false);
         passRevelar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,15 +124,15 @@ public class gui extends javax.swing.JFrame {
         lblPista.setText("                                                                         Por favor, Ingresa exactamente 3 numeros.");
         lblPista.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
-        btnRevelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-formato-claro-48.png"))); // NOI18N
-        btnRevelar.setText("Revelar");
-        btnRevelar.addActionListener(new java.awt.event.ActionListener() {
+        btnRevelarNumero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-formato-claro-48.png"))); // NOI18N
+        btnRevelarNumero.setText("Revelar");
+        btnRevelarNumero.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnRevelarActionPerformed(evt);
+                btnRevelarNumeroActionPerformed(evt);
             }
         });
 
-        lblTrofeo.setText("jLabel1");
+        lblTrofeo.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         lblCodigoSecreto.setFont(new java.awt.Font("Cambria Math", 2, 24)); // NOI18N
         lblCodigoSecreto.setForeground(new java.awt.Color(255, 255, 0));
@@ -153,7 +155,7 @@ public class gui extends javax.swing.JFrame {
 
         jDesktopPane1.setLayer(jPanel1, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblPista, javax.swing.JLayeredPane.DEFAULT_LAYER);
-        jDesktopPane1.setLayer(btnRevelar, javax.swing.JLayeredPane.DEFAULT_LAYER);
+        jDesktopPane1.setLayer(btnRevelarNumero, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblTrofeo, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(lblCodigoSecreto, javax.swing.JLayeredPane.DEFAULT_LAYER);
         jDesktopPane1.setLayer(txtCodigoEscribir, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -182,10 +184,10 @@ public class gui extends javax.swing.JFrame {
                         .addGap(10, 10, 10)
                         .addComponent(txtCodigoEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 290, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRevelarNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(lblTrofeo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(21, 21, 21))))
+                        .addComponent(lblTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         jDesktopPane1Layout.setVerticalGroup(
             jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -195,21 +197,20 @@ public class gui extends javax.swing.JFrame {
                 .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnRevelar, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btnRevelarNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(55, 55, 55))
                     .addGroup(jDesktopPane1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(31, 31, 31)
                         .addComponent(lblPista, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addGroup(jDesktopPane1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(lblTrofeo, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap())
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jDesktopPane1Layout.createSequentialGroup()
-                                .addComponent(txtCodigoEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(37, 37, 37))))))
+                            .addGroup(jDesktopPane1Layout.createSequentialGroup()
+                                .addGap(0, 51, Short.MAX_VALUE)
+                                .addComponent(txtCodigoEscribir, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblTrofeo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(37, 37, 37))))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,14 +258,44 @@ public class gui extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_passRevelar3ActionPerformed
 
-    private void btnRevelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevelarActionPerformed
+    private void btnRevelarNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRevelarNumeroActionPerformed
+        
 
+  if (intento == 0) {
+        
+        passRevelar1.setEchoChar((char)0);
+        JOptionPane.showMessageDialog(rootPane, "primer número revelado");
+        intento++;
+        
+    } else if (intento == 1) {
+        
+        passRevelar2.setEchoChar((char)0);
+        JOptionPane.showMessageDialog(rootPane, "segundo número revelado");
+        intento++;
+        
+        
+        /*
+    } else if (intento == 2) {
+        
+        passRevelar3.setEchoChar((char)0);
+        JOptionPane.showMessageDialog(rootPane, "tercer número revelado");
+        intento+=3;
+        
+        esto es por si necesitamos revelar todos los numeros haciendo otro if else con el mismo metodo :d
+        
+        */ 
+        
+        
+    } else {
+        
+        JOptionPane.showMessageDialog(rootPane, "ya no hay más intentos");
+    }
+               
+            
+          
 
-                                         
-   
-
-
-
+        
+      
 
 
 
@@ -275,28 +306,52 @@ public class gui extends javax.swing.JFrame {
 
 
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnRevelarActionPerformed
+    }//GEN-LAST:event_btnRevelarNumeroActionPerformed
 
 	private void txtCodigoEscribirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoEscribirActionPerformed
     // TODO add your handling code here:
     
-    String CodigoSecreto1;
+    int CodigoSecreto1;
     
-    CodigoSecreto1 = "123";
+    CodigoSecreto1 = numeroSecreto;
     String ingreso = txtCodigoEscribir.getText();
+   
+    int numeroIngresado = Integer.parseInt(ingreso);
 
-    if (ingreso.length() == CodigoSecreto1.length()) {
-        if (CodigoSecreto1.equals(ingreso)) {
-            
-            passRevelar1.setText("1");
-            passRevelar2.setText("2");
-            passRevelar3.setText("3");
-            passRevelar1.setEchoChar((char)0);
-            passRevelar2.setEchoChar((char)0);
-            passRevelar3.setEchoChar((char)0);
-            lblPista.setText("el codigo es correcto");
-        }
+    contadorIntentos++;
+    
+    if (numeroIngresado == numeroSecreto) {
+        passRevelar1.setEchoChar((char)0);
+        passRevelar2.setEchoChar((char)0);
+        passRevelar3.setEchoChar((char)0);
+        lblPista.setText("el código es correcto");
+        
+     try{
+         java.net.URL url = new java.net.URL("https://images.vexels.com/media/users/3/202189/isolated/lists/4f3a5cb84297726d74d69dce22676f83-trofeo-numero-1-plano.png");
+        javax.swing.ImageIcon icon= new javax.swing.ImageIcon(url);
+        java.awt.Image img = icon.getImage().getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH);
+        lblTrofeo.setIcon(new javax.swing.ImageIcon(img));
+        lblTrofeo.setText("");         
+     }catch(Exception e){
+         System.out.println("Imagen de victoria");
+     }
+     //numero de intentos
+     javax.swing.JOptionPane.showMessageDialog(this, "Adivinaste el código secreto. \nIntentos totales: " + String.valueOf(contadorIntentos)," ", 
+             javax.swing.JOptionPane.INFORMATION_MESSAGE);
+     
+        
+    } else if (numeroIngresado < numeroSecreto) {
+        lblPista.setText("el código secreto es mayor");
+    } else {
+        lblPista.setText("el código secreto es menor");
     }
+        
+        
+        
+        
+        
+        
+    
 	}//GEN-LAST:event_txtCodigoEscribirActionPerformed
 
     private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
@@ -354,7 +409,7 @@ public class gui extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRevelar;
+    private javax.swing.JButton btnRevelarNumero;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblCodigoSecreto;
