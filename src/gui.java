@@ -35,8 +35,6 @@ public class gui extends javax.swing.JFrame {
         passRevelar1.setEchoChar('$');
         passRevelar2.setEchoChar('$');
         passRevelar3.setEchoChar('$');
-
-        
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -303,6 +301,23 @@ public class gui extends javax.swing.JFrame {
 
     private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
         // TODO add your handling code here:
+        
+        //pista de magnitud
+    char c = evt.getKeyChar();
+
+    if (Character.isDigit(c)) {
+        String intento = txtCodigoEscribir.getText() + c;
+
+        if (intento.length() == 3) {
+            int resultado = Integer.parseInt(intento);
+
+            if (resultado > numeroSecreto) {
+                lblPista.setText("Más bajo");
+            } else if (resultado < numeroSecreto) {
+                lblPista.setText("Más alto");
+            }
+        }
+    }
     }//GEN-LAST:event_txtCodigoEscribirKeyTyped
 
     /**
