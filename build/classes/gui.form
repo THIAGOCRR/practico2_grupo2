@@ -196,7 +196,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="33" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="                                                                         Por favor, Ingresa exactamente 3 numeros."/>
+            <Property name="text" type="java.lang.String" value="                                                                         Por favor, ingresa exactamente 3 n&#xfa;meros."/>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.MatteColorBorderInfo">
                 <MatteColorBorder>
@@ -234,7 +234,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Codigo Secreto"/>
+            <Property name="text" type="java.lang.String" value="C&#xf3;digo Secreto"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtCodigoEscribir">
@@ -247,7 +247,7 @@
             </Property>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
               <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="escribe 3 digitos + ENTER">
+                <TitledBorder title="Escribe 3 digitos + ENTER">
                   <Font PropertyName="font" name="Yu Gothic UI Semibold" size="18" style="2"/>
                   <Color PropertyName="color" blue="33" green="33" red="ff" type="rgb"/>
                 </TitledBorder>

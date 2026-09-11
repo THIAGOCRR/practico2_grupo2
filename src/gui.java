@@ -121,7 +121,7 @@ public class gui extends javax.swing.JFrame {
         );
 
         lblPista.setForeground(new java.awt.Color(255, 255, 51));
-        lblPista.setText("                                                                         Por favor, Ingresa exactamente 3 numeros.");
+        lblPista.setText("                                                                         Por favor, ingresa exactamente 3 números.");
         lblPista.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(255, 255, 255)));
 
         btnRevelarNumero.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/icons8-formato-claro-48.png"))); // NOI18N
@@ -136,11 +136,11 @@ public class gui extends javax.swing.JFrame {
 
         lblCodigoSecreto.setFont(new java.awt.Font("Cambria Math", 2, 24)); // NOI18N
         lblCodigoSecreto.setForeground(new java.awt.Color(255, 255, 0));
-        lblCodigoSecreto.setText("Codigo Secreto");
+        lblCodigoSecreto.setText("Código Secreto");
 
         txtCodigoEscribir.setBackground(new java.awt.Color(255, 204, 204));
         txtCodigoEscribir.setForeground(new java.awt.Color(255, 102, 102));
-        txtCodigoEscribir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "escribe 3 digitos + ENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI Semibold", 2, 18), new java.awt.Color(255, 51, 51))); // NOI18N
+        txtCodigoEscribir.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Escribe 3 digitos + ENTER", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Yu Gothic UI Semibold", 2, 18), new java.awt.Color(255, 51, 51))); // NOI18N
         txtCodigoEscribir.setCaretColor(new java.awt.Color(255, 102, 102));
         txtCodigoEscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -264,13 +264,13 @@ public class gui extends javax.swing.JFrame {
   if (intento == 0) {
         
         passRevelar1.setEchoChar((char)0);
-        JOptionPane.showMessageDialog(rootPane, "primer número revelado");
+        JOptionPane.showMessageDialog(rootPane, "Primer número revelado");
         intento++;
         
     } else if (intento == 1) {
         
         passRevelar2.setEchoChar((char)0);
-        JOptionPane.showMessageDialog(rootPane, "segundo número revelado");
+        JOptionPane.showMessageDialog(rootPane, "Segundo número revelado");
         intento++;
         
         
@@ -291,18 +291,6 @@ public class gui extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(rootPane, "ya no hay más intentos");
     }
                
-            
-          
-
-        
-      
-
-
-
-
-
-
-
 
 
         // TODO add your handling code here:
@@ -324,7 +312,7 @@ public class gui extends javax.swing.JFrame {
         passRevelar1.setEchoChar((char)0);
         passRevelar2.setEchoChar((char)0);
         passRevelar3.setEchoChar((char)0);
-        lblPista.setText("el código es correcto");
+        lblPista.setText("El código es correcto");
         
      try{
          java.net.URL url = new java.net.URL("https://images.vexels.com/media/users/3/202189/isolated/lists/4f3a5cb84297726d74d69dce22676f83-trofeo-numero-1-plano.png");
@@ -341,9 +329,9 @@ public class gui extends javax.swing.JFrame {
      
         
     } else if (numeroIngresado < numeroSecreto) {
-        lblPista.setText("el código secreto es mayor");
+        lblPista.setText("El código secreto es MAYOR");
     } else {
-        lblPista.setText("el código secreto es menor");
+        lblPista.setText("El código secreto es MENOR");
     }
         
         
@@ -355,24 +343,7 @@ public class gui extends javax.swing.JFrame {
 	}//GEN-LAST:event_txtCodigoEscribirActionPerformed
 
     private void txtCodigoEscribirKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodigoEscribirKeyTyped
-        // TODO add your handling code here:
-        
-        //pista de magnitud
-    char c = evt.getKeyChar();
 
-    if (Character.isDigit(c)) {
-        String intento = txtCodigoEscribir.getText() + c;
-
-        if (intento.length() == 3) {
-            int resultado = Integer.parseInt(intento);
-
-            if (resultado > numeroSecreto) {
-                lblPista.setText("Más bajo");
-            } else if (resultado < numeroSecreto) {
-                lblPista.setText("Más alto");
-            }
-        }
-    }
     }//GEN-LAST:event_txtCodigoEscribirKeyTyped
 
     /**
